@@ -83,7 +83,7 @@ public class InputTest : MonoBehaviour {
             GameObject bullet = Instantiate(ball, transform.position, Quaternion.identity);
             Rigidbody bullet_rb = bullet.GetComponent<Rigidbody>();
             bullet_rb.rotation = transform.rotation;
-            bullet_rb.AddRelativeForce(0, 0, -1000);
+            bullet_rb.AddRelativeForce(0, 30, -500);
         }
     }
 }
