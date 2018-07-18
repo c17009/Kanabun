@@ -940,7 +940,7 @@ GameObject:
   - component: {fileID: 1287435907}
   - component: {fileID: 1287435906}
   m_Layer: 5
-  m_Name: Image
+  m_Name: AimImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
