@@ -805,18 +805,18 @@ public class OvrAvatar : MonoBehaviour
                             materialManager = DefaultHandMaterialManager;
                         }
 
-                        ovrRenderPart = AddSkinnedMeshRenderPBSV2Component(
+                        /*ovrRenderPart = AddSkinnedMeshRenderPBSV2Component(
                             renderPart,
                             renderPartObject,
                             CAPI.ovrAvatarRenderPart_GetSkinnedMeshRenderPBSV2(renderPart),
-                            materialManager);
+                            materialManager);*/
                     }
                     break;
                 default:
                     throw new NotImplementedException(string.Format("Unsupported render part type: {0}", type.ToString()));
             }
 
-            ovrComponent.RenderParts.Add(ovrRenderPart);
+            //ovrComponent.RenderParts.Add(ovrRenderPart);
         }
     }
 

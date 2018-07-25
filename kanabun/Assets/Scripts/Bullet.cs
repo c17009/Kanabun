@@ -20,4 +20,13 @@ public class Bullet : MonoBehaviour {
         //transform.Translate(0, 0, 1 * bspeed);
         //transform.position += transform.forward * bspeed * Time.deltaTime;
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Oculus.Avatar;
 
-public class InputTest : MonoBehaviour {
+public class Shooter : MonoBehaviour {
     public AudioClip se;
     public OVRInput.Controller controller;
     private AudioSource audiosource;
@@ -43,7 +43,7 @@ public class InputTest : MonoBehaviour {
             //OnSound();
         }
 
-        if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+        if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
         {
             //Debug.Log("右人差し指トリガーを押した");
             //OnSound();
@@ -77,13 +77,9 @@ public class InputTest : MonoBehaviour {
 
     private void OnShot()
     {
-        count += 1;
-        if (count % 5 == 0)
-        {
             GameObject bullet = Instantiate(ball, transform.position, Quaternion.identity);
             Rigidbody bullet_rb = bullet.GetComponent<Rigidbody>();
             bullet_rb.rotation = transform.rotation;
             bullet_rb.AddRelativeForce(0, 30, -500);
-        }
     }
 }

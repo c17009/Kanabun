@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Shoter : MonoBehaviour
+public class Aim : MonoBehaviour
 {
 
     // 照準のImageをインスペクターから設定
