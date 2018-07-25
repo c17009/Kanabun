@@ -2,71 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Oculus.Avatar;
+using UnityEngine.UI;
 
 public class Shooter : MonoBehaviour {
     public AudioClip se;
-    public OVRInput.Controller controller;
     private AudioSource audiosource;
-    public GameObject ball;
-    private int count;
-	// Use this for initialization
-	void Start () {
+    public GameObject Bullet;
+
+    [SerializeField]
+    private Image aimPointImage;
+    RaycastHit hit;
+
+    void Start () {
         audiosource = GetComponent<AudioSource>();
         audiosource.clip = se;
 	}
 	
-	// Update is called once per frame
 	void Update () {
-        if (OVRInput.GetDown(OVRInput.RawButton.A))
+
+        Ray ray = new Ray(transform.position, transform.forward * -1);//Rayをとばす（発射座標、向き）
+
+        if (Physics.Raycast(ray, out hit, 30.0f))
         {
-            //Debug.Log("Aボタンを押した");
-            //OnSound();
-        }
-        if (OVRInput.GetDown(OVRInput.RawButton.B))
-        {
-            //Debug.Log("Bボタンを押した");
-            //OnSound();
-        }
-        if (OVRInput.GetDown(OVRInput.RawButton.X))
-        {
-            //Debug.Log("Xボタンを押した");
-            //OnSound();
-        }
-        if (OVRInput.GetDown(OVRInput.RawButton.Y))
-        {
-            //Debug.Log("Yボタンを押した");
-            //OnSound();
-        }
-        if (OVRInput.GetDown(OVRInput.RawButton.Start))
-        {
-            //Debug.Log("メニューボタン（左アナログスティックの下にある）を押した");
-            //OnSound();
+
+            // Rayがhitしたオブジェクトのタグ名を取得
+            string hitTag = hit.collider.tag;
+
+            // タグの名前がEnemyだったら、照準の色が変わる
+            if ((hitTag.Equals("Enemy")))
+            {
+                aimPointImage.color = new Color(1, 0, 0, 1);
+            }
+            else
+            {
+                //Enemy以外では水色に
+                aimPointImage.color = new Color(0.0f, 1.0f, 1.0f, 1.0f);
+            }
+
+            //aim位置の更新
+            aimPointImage.transform.position = hit.point;
+
         }
 
         if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
         {
             //Debug.Log("右人差し指トリガーを押した");
             //OnSound();
-            OnShot();
-        }
-        if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
-        {
-            //OnSound();
-        }
-        if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger))
-        {
-            //Debug.Log("右中指トリガーを押した");
-            //OnSound();
-        }
-        if (OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
-        {
-            //Debug.Log("左人差し指トリガーを押した");
-            //OnSound();
-        }
-        if (OVRInput.GetDown(OVRInput.RawButton.LHandTrigger))
-        {
-            //Debug.Log("左中指トリガーを押した");
-            //OnSound();
+            OnShot(hit.point);
         }
     }
 
@@ -75,9 +57,9 @@ public class Shooter : MonoBehaviour {
         audiosource.PlayOneShot(audiosource.clip);
     }
 
-    private void OnShot()
+    private void OnShot(Vector3 aimpos)
     {
-            GameObject bullet = Instantiate(ball, transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
             Rigidbody bullet_rb = bullet.GetComponent<Rigidbody>();
             bullet_rb.rotation = transform.rotation;
             bullet_rb.AddRelativeForce(0, 30, -500);

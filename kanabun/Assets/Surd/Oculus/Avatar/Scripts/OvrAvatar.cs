@@ -213,7 +213,7 @@ public class OvrAvatar : MonoBehaviour
             ovrComponent.ClothingAlphaTexture = clothingAlphaTexture;
         }
 
-        AddRenderParts(ovrComponent, component, componentObject.transform);
+        //AddRenderParts(ovrComponent, component, componentObject.transform);
     }
 
     private OvrAvatarSkinnedMeshRenderComponent AddSkinnedMeshRenderComponent(GameObject gameObject, ovrAvatarRenderPart_SkinnedMeshRender skinnedMeshRender)
@@ -768,7 +768,7 @@ public class OvrAvatar : MonoBehaviour
         }
     }
 
-    private void AddRenderParts(
+    /*private void AddRenderParts(
         OvrAvatarComponent ovrComponent, 
         ovrAvatarComponent component, 
         Transform parent)
@@ -798,18 +798,18 @@ public class OvrAvatar : MonoBehaviour
 
                         if (ovrComponent.name == "body")
                         {
-                            materialManager = DefaultBodyMaterialManager;
+                            //materialManager = DefaultBodyMaterialManager;
                         }
                         else if( ovrComponent.name.Contains("hand"))
                         {
-                            materialManager = DefaultHandMaterialManager;
+                            //materialManager = DefaultHandMaterialManager;
                         }
 
                         /*ovrRenderPart = AddSkinnedMeshRenderPBSV2Component(
                             renderPart,
                             renderPartObject,
                             CAPI.ovrAvatarRenderPart_GetSkinnedMeshRenderPBSV2(renderPart),
-                            materialManager);*/
+                            materialManager);
                     }
                     break;
                 default:
@@ -818,7 +818,7 @@ public class OvrAvatar : MonoBehaviour
 
             //ovrComponent.RenderParts.Add(ovrRenderPart);
         }
-    }
+    }*/
 
     public void RefreshBodyParts()
     {
@@ -836,7 +836,7 @@ public class OvrAvatar : MonoBehaviour
             if (sdkBodyComponent != null)
             {
                 ovrAvatarComponent sdKComponent = (ovrAvatarComponent)Marshal.PtrToStructure(sdkBodyComponent.Value.renderComponent, typeof(ovrAvatarComponent));
-                AddRenderParts(component, sdKComponent, Body.gameObject.transform);
+                //AddRenderParts(component, sdKComponent, Body.gameObject.transform);
             }
             else
             {

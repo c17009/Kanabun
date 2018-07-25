@@ -125,4 +125,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 4811793449424942, guid: 77089077546031c46a5da1ebcdcb013b, type: 2}
-  EnemySpeed: 0.1
+  EnemySpeed: 0.05
