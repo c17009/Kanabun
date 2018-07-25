@@ -1085,7 +1085,7 @@ GameObject:
   - component: {fileID: 1049625923}
   - component: {fileID: 1049625925}
   m_Layer: 0
-  m_Name: bullet ins
+  m_Name: bulletins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1116,7 +1116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   se: {fileID: 8300000, guid: c9eadebdde1245549a55dd0cb91673f7, type: 3}
-  controller: 3
   Bullet: {fileID: 1503957058547476, guid: 62c6a3c2345d06346be5efb6bf57266e, type: 2}
   aimPointImage: {fileID: 1287435906}
 --- !u!65 &1049625924
