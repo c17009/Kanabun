@@ -22,11 +22,11 @@ GameObject:
   - component: {fileID: 33312849593061850}
   - component: {fileID: 23656150252059196}
   - component: {fileID: 65068027998184216}
-  - component: {fileID: 114688667410230966}
   - component: {fileID: 54450871915886024}
+  - component: {fileID: 114832164555369702}
   m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Enemy
+  m_Name: Boss
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1041471257830596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114688667410230966
+--- !u!114 &114832164555369702
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1041471257830596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 680843c2011e31a439293463e9eb7b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: b0a073cd0c7821149a86e644ffeefea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 4811793449424942, guid: 77089077546031c46a5da1ebcdcb013b, type: 2}
-  EnemySpeed: 0.05
+  BossLife: 60
+  Player: {fileID: 4217558172329916, guid: 2e0fc153ebd6736469a6600da90ebc39, type: 2}

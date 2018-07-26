@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    public GameObject Enemy;
+    public GameObject SpawnEnemy;
     private int spawncount;
     public int IntervalCount;
+    public static bool BossOn;
     // Use this for initialization
     void Start()
     {
-
+        BossOn = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        spawncount += 1;
-        if (spawncount % IntervalCount == 0)
+        if (BossOn == true)
         {
-            Instantiate(Enemy, transform.position, Quaternion.identity);
+            spawncount += 1;
+            if (spawncount % IntervalCount == 0)
+            {
+                Instantiate(SpawnEnemy, transform.position, Quaternion.identity);
+            }
         }
     }
 }
