@@ -768,7 +768,7 @@ public class OvrAvatar : MonoBehaviour
         }
     }
 
-    /*private void AddRenderParts(
+    private void AddRenderParts(
         OvrAvatarComponent ovrComponent, 
         ovrAvatarComponent component, 
         Transform parent)
@@ -805,7 +805,7 @@ public class OvrAvatar : MonoBehaviour
                             //materialManager = DefaultHandMaterialManager;
                         }
 
-                        /*ovrRenderPart = AddSkinnedMeshRenderPBSV2Component(
+                        ovrRenderPart = AddSkinnedMeshRenderPBSV2Component(
                             renderPart,
                             renderPartObject,
                             CAPI.ovrAvatarRenderPart_GetSkinnedMeshRenderPBSV2(renderPart),
@@ -816,9 +816,9 @@ public class OvrAvatar : MonoBehaviour
                     throw new NotImplementedException(string.Format("Unsupported render part type: {0}", type.ToString()));
             }
 
-            //ovrComponent.RenderParts.Add(ovrRenderPart);
+            ovrComponent.RenderParts.Add(ovrRenderPart);
         }
-    }*/
+    }
 
     public void RefreshBodyParts()
     {

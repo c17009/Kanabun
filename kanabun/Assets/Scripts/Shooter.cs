@@ -24,7 +24,7 @@ public class Shooter : MonoBehaviour
     void Update()
     {
 
-        Ray ray = new Ray(transform.position, transform.forward * -1);//Rayをとばす（発射座標、向き）
+        Ray ray = new Ray(transform.position, transform.forward);//Rayをとばす（発射座標、向き）
 
         if (Physics.Raycast(ray, out hit, 30.0f))
         {
