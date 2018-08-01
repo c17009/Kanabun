@@ -10,6 +10,7 @@ public class Shooter : MonoBehaviour
     private AudioSource audiosource;
     public GameObject Bullet;
     public bool Right = false;
+    public Vector3[] Torques = { new Vector3(30, 30, 50), new Vector3(30,-30,30), new Vector3(30, 70, 40) };
 
     [SerializeField]
     private Image aimPointImage;
@@ -148,7 +149,7 @@ public class Shooter : MonoBehaviour
 
         Vector3 force = aimVector * rigidbody.mass;
         rigidbody.AddForce(force, ForceMode.Impulse);
-        rigidbody.AddTorque(transform.up * 90 * Mathf.PI , ForceMode.Impulse);
+        rigidbody.AddTorque(Torques[Random.Range(0,Torques.Length)] * 1 * Mathf.PI , ForceMode.Impulse);
     }
 
     private void ShootFixedTime(Vector3 aimPos,float airTime)
