@@ -15,14 +15,14 @@ public class Enemymanager : MonoBehaviour {
 	void Update () {
 
         GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
-        if (Enemy.EnemyDcount == 20)
+        if (EnemyTest.EnemyDcount == 20)
         {
             foreach(GameObject enemy in enemys)
             {
                 Destroy(enemy);
             }
 
-            Enemy.EnemyDcount = 0;
+            EnemyTest.EnemyDcount = 0;
             Instantiate(Boss,transform.position, Quaternion.identity);
             SpawnPoint.SetActive(false);
         }
