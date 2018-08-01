@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8830e0c6342df94f9bf2dc68aa0c0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1938344486799934, guid: d78c8cd25b5313d4dad64a3d6cab4b5e, type: 2}
+  SpawnEnemy: {fileID: 0}
   IntervalCount: 200
 --- !u!4 &295928776
 Transform:
@@ -1404,7 +1404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8830e0c6342df94f9bf2dc68aa0c0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1041471257830596, guid: 8a7de8ce0ccacd041bd37933e668dd4a, type: 2}
+  SpawnEnemy: {fileID: 0}
   IntervalCount: 120
 --- !u!4 &888817633
 Transform:
@@ -1771,7 +1771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 1041471257830596, guid: 8a7de8ce0ccacd041bd37933e668dd4a, type: 2}
+  - {fileID: 1312411184928978, guid: 73f41840488fd92449d8dbdd476f4a6b, type: 2}
   filePass: CSV/Test
   timeOffset: -1
 --- !u!4 &1631197204
@@ -1814,7 +1814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8830e0c6342df94f9bf2dc68aa0c0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1312411184928978, guid: 73f41840488fd92449d8dbdd476f4a6b, type: 2}
+  SpawnEnemy: {fileID: 0}
   IntervalCount: 100
 --- !u!4 &1633339673
 Transform:
@@ -2063,7 +2063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8830e0c6342df94f9bf2dc68aa0c0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1365946396070858, guid: 87c14c22d2821d847ab908a19e40b8ee, type: 2}
+  SpawnEnemy: {fileID: 0}
   IntervalCount: 150
 --- !u!4 &2086717847
 Transform:

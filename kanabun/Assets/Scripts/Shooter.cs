@@ -76,7 +76,7 @@ public class Shooter : MonoBehaviour
         bullet_rb.AddRelativeForce(0, 30, -500);
     }
 
-    private void Shoot(Vector3 aimPos)
+    private void Shoot(Vector3 aimPos)//角度指定で斜方投射
     {
         ShootFixedAngle(aimPos, 15);
     }
@@ -93,7 +93,7 @@ public class Shooter : MonoBehaviour
         InstantiateBullet(vec);
     }
 
-    private float ComputeVectorFromAngle(Vector3 aimpos, float aimangle)
+    private float ComputeVectorFromAngle(Vector3 aimpos, float aimangle)//角度処理
     {
         Vector2 startPos = new Vector2(transform.position.x, transform.position.z);
         Vector2 targetPos = new Vector2(aimpos.x, aimpos.z);
@@ -135,7 +135,7 @@ public class Shooter : MonoBehaviour
         return vec;
     }
 
-    private void InstantiateBullet(Vector3 aimVector)
+    private void InstantiateBullet(Vector3 aimVector)//弾の発射
     {
         if (Bullet == null)
         {
@@ -148,6 +148,7 @@ public class Shooter : MonoBehaviour
 
         Vector3 force = aimVector * rigidbody.mass;
         rigidbody.AddForce(force, ForceMode.Impulse);
+        rigidbody.AddTorque(transform.up * 90 * Mathf.PI , ForceMode.Impulse);
     }
 
     private void ShootFixedTime(Vector3 aimPos,float airTime)
