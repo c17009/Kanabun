@@ -6,6 +6,7 @@ public class Enemymanager : MonoBehaviour {
 
     public GameObject Boss;
     public GameObject SpawnPoint;
+    public float EnemyDcount;
     // Use this for initialization
     void Start () {
         
@@ -15,14 +16,14 @@ public class Enemymanager : MonoBehaviour {
 	void Update () {
 
         GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
-        if (Enemy.EnemyDcount == 20)
+        if (EnemyDcount == 20)
         {
             foreach(GameObject enemy in enemys)
             {
                 Destroy(enemy);
             }
 
-            Enemy.EnemyDcount = 0;
+            EnemyDcount = 0;
             Instantiate(Boss,transform.position, Quaternion.identity);
             SpawnPoint.SetActive(false);
         }
