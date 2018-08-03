@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTest : MonoBehaviour
+public class EnemyTest_pro : MonoBehaviour
 {
     public Transform Target;
     public float EnemySpeed;

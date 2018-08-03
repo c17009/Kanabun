@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54450871915886024}
   - component: {fileID: 114832164555369702}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a073cd0c7821149a86e644ffeefea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossLife: 90
   Player: {fileID: 4217558172329916, guid: 2e0fc153ebd6736469a6600da90ebc39, type: 2}
   TargetPoint: {fileID: 4599586294287988, guid: 892e82f4110277e4dbbd33ba7a6e0daf,
     type: 2}
