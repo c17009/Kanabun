@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Shooter : MonoBehaviour
 {
+    private Transform UIcamTrans;
     public AudioClip se;
     private AudioSource audiosource;
     public GameObject Bullet;
@@ -18,6 +19,7 @@ public class Shooter : MonoBehaviour
 
     void Start()
     {
+        UIcamTrans = GameObject.Find("UICamera").GetComponent<Transform>();
         audiosource = GetComponent<AudioSource>();
         audiosource.clip = se;
     }
@@ -33,7 +35,6 @@ public class Shooter : MonoBehaviour
             // Rayがhitしたオブジェクトのタグ名を取得
             string hitTag = hit.collider.tag;
 
-            print(hit.point);
 
             // タグの名前がEnemyだったら、照準の色が変わる
             if ((hitTag.Equals("Enemy")))
@@ -47,7 +48,8 @@ public class Shooter : MonoBehaviour
             }
             //Debug.DrawRay(transform.position, ray.direction * 30f, Color.green, 0.1f, false);
             //aim位置の更新
-            aimPointImage.transform.position = new Vector3(hit.point.x * -1 ,hit.point.y,hit.point.z * -1 - 1.5f);
+            aimPointImage.transform.position = new Vector3(hit.point.x * -1 ,hit.point.y,hit.point.z * -1);
+            aimPointImage.transform.LookAt(UIcamTrans);
         }
 
         if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
