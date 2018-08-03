@@ -8,18 +8,19 @@ public class Boss : MonoBehaviour {
     public Transform TargetPoint;
     private float Bossspeed = 0.1f;
     bool Change = true;
+    bool LifeOver = true;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 
     // Update is called once per frame
     void Update()
     {
-        if (BossLife <= 60 && BossLife >=50)
+        print(Change);
+        if (BossLife <= 60 && LifeOver == true )
         {
-            Change = false;
             Target();
         }
         else if (BossLife<= 0)
@@ -53,10 +54,11 @@ public class Boss : MonoBehaviour {
         Bossspeed = 0.5f;
         transform.LookAt(TargetPoint);
         transform.position += transform.forward * Bossspeed;
-        if(this.transform.position == TargetPoint.position)
-        {
-            Change = true;
-        }
+        Change = false;
+    }
+    public void WaitBoss()
+    {
+        
     }
 
 }
