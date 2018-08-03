@@ -14,7 +14,7 @@ public class Pshot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        if (Input.GetKey(KeyCode.Z) || Input.GetButton("Fire1"))
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetButtonDown("Fire1"))
         {
             Shot();
         }
@@ -33,6 +33,6 @@ public class Pshot : MonoBehaviour {
     {
         var BulletIns = GameObject.Instantiate(bullet,this.transform.position, transform.rotation) as GameObject;
         BulletIns.GetComponent<Rigidbody>().AddForce(BulletIns.transform.forward * BulletPower);
-        Destroy(BulletIns, 5f);
+        Destroy(BulletIns, 10f);
     }
 }
