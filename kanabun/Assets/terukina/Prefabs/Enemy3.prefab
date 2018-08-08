@@ -22,11 +22,11 @@ GameObject:
   - component: {fileID: 33034489108248116}
   - component: {fileID: 23683777412688304}
   - component: {fileID: 65583255488652270}
-  - component: {fileID: 114427464542676046}
   - component: {fileID: 54696674388423816}
+  - component: {fileID: 114598947718838928}
   m_Layer: 0
   m_Name: Enemy3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,12 +108,12 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1365946396070858}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114427464542676046
+--- !u!114 &114598947718838928
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1365946396070858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 680843c2011e31a439293463e9eb7b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: fee24fdc6f194604791ea25082beafed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 4217558172329916, guid: 2e0fc153ebd6736469a6600da90ebc39, type: 2}
+  Target: {fileID: 4811793449424942, guid: 77089077546031c46a5da1ebcdcb013b, type: 2}
   EnemySpeed: 0.1

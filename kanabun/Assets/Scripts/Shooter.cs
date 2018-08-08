@@ -77,7 +77,7 @@ public class Shooter : MonoBehaviour
         GameObject bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
         Rigidbody bullet_rb = bullet.GetComponent<Rigidbody>();
         bullet_rb.rotation = transform.rotation;
-        bullet_rb.AddRelativeForce(0, 30, -500);
+        bullet_rb.AddRelativeForce(0, 30, 500);
     }
 
     private void Shoot(Vector3 aimPos)//角度指定で斜方投射
@@ -91,6 +91,7 @@ public class Shooter : MonoBehaviour
         if (speedVec <= 0.0f)
         {
             Debug.Log("!!");
+            OnShot(aimpos);
             return;
         }
         Vector3 vec = ConvertVectorToVector3(speedVec, aimangle, aimpos);
