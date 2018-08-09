@@ -5,9 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     private float BulletSpeed = 100;
-
+    [SerializeField]
+    private GameObject Gamemanager;
+    private GameManager GameManager;
 	// Use this for initialization
 	void Start () {
+        GameManager = Gamemanager.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -27,5 +30,19 @@ public class Bullet : MonoBehaviour {
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "StartTrigger")
+        {
+            GameManager.GoToPlay();
+            Destroy(collision.gameObject);
+        }
+    }
+
+    IEnumerator BreakWait()
+    {
+        yield return new WaitForSeconds(2f);
     }
 }

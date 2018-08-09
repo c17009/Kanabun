@@ -28,7 +28,7 @@ public class EnemyTest_pro : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //切り株に触れたら、フルーツの親になる
-        //for (int i = fruit.Length; 0 < i; i--)
+        for (int i = fb.fruit.Count; 0 < i; i--)
         //{
 
             if (other.gameObject.tag == "Stump")
@@ -37,6 +37,7 @@ public class EnemyTest_pro : MonoBehaviour
                 Fruit.transform.parent = transform;
                 Fruit.transform.position = transform.position;
                 Fruit.transform.position += new Vector3(0, 1, 0);
+                fb.fruit.RemoveAt(-1);
                 print("OK");
             }
        // }

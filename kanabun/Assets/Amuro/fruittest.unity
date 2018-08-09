@@ -365,10 +365,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruit:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2058763392}
+  - {fileID: 1456452545}
+  - {fileID: 644511003}
+  - {fileID: 1649851933}
 --- !u!1001 &1140564285
 Prefab:
   m_ObjectHideFlags: 0
@@ -446,6 +446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   EnemySpeed: 0
+  fb: {fileID: 0}
 --- !u!54 &1263998800
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -627,6 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   EnemySpeed: 0
+  fb: {fileID: 0}
 --- !u!54 &1492342975
 Rigidbody:
   m_ObjectHideFlags: 0
