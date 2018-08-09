@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - Target
   - StartTrigger
+  - FinishTrigger
   layers:
   - Default
   - TransparentFX

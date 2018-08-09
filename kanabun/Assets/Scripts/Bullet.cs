@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    private float BulletSpeed = 100;
     [SerializeField]
     private GameObject Gamemanager;
-    private GameManager GameManager;
+    private GameManager GameManager;//Script宣言
 	// Use this for initialization
 	void Start () {
         GameManager = Gamemanager.GetComponent<GameManager>();
@@ -19,6 +18,9 @@ public class Bullet : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        StartCoroutine(Wait(10f));
+        Destroy(gameObject);
         //transform.Translate(0, 0, 1 * bspeed);
         //transform.position += transform.forward * bspeed * Time.deltaTime;
 	}
@@ -36,13 +38,20 @@ public class Bullet : MonoBehaviour {
     {
         if(collision.gameObject.tag == "StartTrigger")
         {
+            StartCoroutine(Wait(2f));
             GameManager.GoToPlay();
+            Destroy(collision.gameObject);
+        }
+        if(collision.gameObject.tag == "FinishTrigger")
+        {
+            StartCoroutine(Wait(2f));
+            GameManager.GameFinish();
             Destroy(collision.gameObject);
         }
     }
 
-    IEnumerator BreakWait()
+    IEnumerator Wait(float time)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(time);
     }
 }

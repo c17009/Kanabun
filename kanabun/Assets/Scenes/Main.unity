@@ -1622,9 +1622,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartObject: {fileID: 1063593135469598, guid: 00ae193a86cbf2f4ea776901be266654,
     type: 2}
+  FinishObject: {fileID: 0}
   score: 0
   time: 60
   isPlaying: 0
+  isFinish: 0
   CSVReader: {fileID: 0}
 --- !u!4 &1099363645
 Transform:

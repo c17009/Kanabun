@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     private GameObject StartPanel;
+    private GameObject ResultPanel;
     private GameObject PlayPanel;
     public GameObject StartObject;
+    public GameObject FinishObject;
     private Text scoretext;
     private Text StartText;
     public int score;
@@ -18,6 +20,8 @@ public class GameManager : MonoBehaviour {
     private int oldscore;
     [SerializeField]
     private bool isPlaying = false;
+    [SerializeField]
+    private bool isFinish = false;
     [SerializeField]
     private GameObject CSVReader;
 
@@ -37,12 +41,14 @@ public class GameManager : MonoBehaviour {
     void Update()
     {
         if (isPlaying) { Gameplay(); }
+        if (isFinish) { GameFinish(); }
     }
 
     void Initialize()
     {
         score = 0;
         isPlaying = false;
+        isFinish = false;
         time = 60;
         PlayPanel.SetActive(false);
         StartPanel.SetActive(true);
@@ -77,18 +83,33 @@ public class GameManager : MonoBehaviour {
             oldtime = time;
     }
 
+    public void GameFinish()
+    {
+        Instantiate(StartObject, new Vector3(0, 0.5f, 7.674f), Quaternion.identity);
+        Initialize();
+    }
+
     public void GoToPlay()
     {
-        StartCoroutine(WaitCount());
+        StartCoroutine(WaitCount("Ready..."));
         StartPanel.SetActive(false);
         CSVReader.SetActive(true);
         isPlaying = true;
     }
 
-    IEnumerator WaitCount()
+    IEnumerator WaitCount(string str)
     {
-        StartText.text = "Ready...";
+        StartText.text = str;
         yield return new WaitForSeconds(3f);
+    }
+
+    private void GoToResult() //time0になるとResultPanelが開く,FinishTriggerを生成
+    {
+        CSVReader.SetActive(false);
+        isPlaying = false;
+        StartCoroutine(WaitCount("Finish!!"));
+        ResultPanel.SetActive(true);
+        Instantiate(FinishObject, new Vector3(0, 0.5f, 7.674f), Quaternion.identity);
     }
  }
 
