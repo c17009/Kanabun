@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Boss
   - Target
+  - Stump
+  - Fruit
   layers:
   - Default
   - TransparentFX
