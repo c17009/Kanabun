@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     public GameObject StartObject;
     public GameObject FinishObject;
     private Text scoretext;
-    private Text StartText;
+    private Text InfoText;
     public int score;
     private Text MainTime;
     [SerializeField]
@@ -22,16 +22,16 @@ public class GameManager : MonoBehaviour {
     private bool isPlaying = false;
     [SerializeField]
     private bool isFinish = false;
-    [SerializeField]
     private GameObject CSVReader;
 
 
     void Start()
     {
+        InfoText = GameObject.Find("InfoText").GetComponent<Text>();
         CSVReader = GameObject.Find("CSVReader");
-        StartText = GameObject.Find("StartText").GetComponent<Text>();
         StartPanel = GameObject.Find("StartPanel");
         PlayPanel = GameObject.Find("PlayPanel");
+        ResultPanel = GameObject.Find("ResultPanel");
         MainTime = GameObject.Find("timeText").GetComponent<Text>();
         scoretext = GameObject.Find("Score").GetComponent<Text>();
         Initialize();
@@ -51,9 +51,10 @@ public class GameManager : MonoBehaviour {
         isFinish = false;
         time = 60;
         PlayPanel.SetActive(false);
+        ResultPanel.SetActive(false);
         StartPanel.SetActive(true);
         CSVReader.SetActive(false);
-        StartText.text = "これをたおすとスタート\n↓";
+        InfoText.text = "これをたおすとスタート\n↓";
     }
 
     public void Addpoint(int point)
@@ -91,24 +92,25 @@ public class GameManager : MonoBehaviour {
 
     public void GoToPlay()
     {
-        StartCoroutine(WaitCount("Ready..."));
+        InfoText.text = "Ready...";
+        StartCoroutine(WaitCount(3f));
         StartPanel.SetActive(false);
         CSVReader.SetActive(true);
         isPlaying = true;
     }
 
-    IEnumerator WaitCount(string str)
+    IEnumerator WaitCount(float time)
     {
-        StartText.text = str;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(time);
     }
 
     private void GoToResult() //time0になるとResultPanelが開く,FinishTriggerを生成
     {
+        InfoText.text = "Finish!!";
         CSVReader.SetActive(false);
         isPlaying = false;
-        StartCoroutine(WaitCount("Finish!!"));
         ResultPanel.SetActive(true);
+        StartCoroutine(WaitCount(3f));
         Instantiate(FinishObject, new Vector3(0, 0.5f, 7.674f), Quaternion.identity);
     }
  }
