@@ -14,7 +14,7 @@ public class EnemyTest_pro : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-       List<GameObject> fruit = fb.fruit;
+       //List<GameObject> fruit = fb.fruit;
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class EnemyTest_pro : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //切り株に触れたら、フルーツの親になる
-        for (int i = fb.fruit.Count; 0 < i; i--)
+        //for (int i = fb.fruit.Count; 0 < i; i--)
         //{
 
             if (other.gameObject.tag == "Stump")
