@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour {
         time = 60;
         PlayPanel.SetActive(false);
         StartPanel.SetActive(true);
+        CSVReader.SetActive(false);
         StartText.text = "これをたおすとスタート\n↓";
     }
 

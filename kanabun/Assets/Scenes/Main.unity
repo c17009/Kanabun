@@ -1404,7 +1404,7 @@ GameObject:
   - component: {fileID: 929635319}
   - component: {fileID: 929635321}
   - component: {fileID: 929635320}
-  m_Layer: 2
+  m_Layer: 5
   m_Name: aim_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2032,7 +2032,7 @@ GameObject:
   - component: {fileID: 1832232419}
   - component: {fileID: 1832232421}
   - component: {fileID: 1832232420}
-  m_Layer: 2
+  m_Layer: 5
   m_Name: aim_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
