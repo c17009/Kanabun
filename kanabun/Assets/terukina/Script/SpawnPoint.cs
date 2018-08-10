@@ -23,6 +23,7 @@ public class SpawnPoint : MonoBehaviour
             if (spawncount % IntervalCount == 0)
             {
                 Instantiate(SpawnEnemy, transform.position, Quaternion.identity);
+                BossOn = false;
             }
         }
     }
