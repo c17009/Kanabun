@@ -5,36 +5,45 @@ using UnityEngine;
 public class Boss : MonoBehaviour {
     private int  Damege = 0;
     public Transform Player;
-    public Transform TargetPoint;
-    private float Bossspeed = 0.1f;
+    public GameObject PlayerPos;
+    private float Bossspeed = 0.3f;
     private int RandomPoint;
     private int BossLife = 5;
     private int Roty;
-
-
+    private bool close = true;
+    Vector3 vecBasePos;
     // Use this for initialization
     void Start () {
         Damege = 0;
         StartCoroutine(Delay());
+        vecBasePos = transform.position;
     }
     
     // Update is called once per frame
     void Update()
     {
-        print(BossLife);
-        if(Damege <= 29)
+        //プレイヤーの現在地を取得
+        Vector3 PPos = Player.transform.position;
+        //ボスの現在地を取得
+        Vector3 BPos = this.transform.position;
+        //プレイヤーとボスの間の距離を取得
+        float Dis = Vector3.Distance(PPos, BPos);
+        
+        if(Dis >= 8)
         {
-            Move();
+            BossHit();
         }
-        else if(Damege >= 30)
+        else
+        {
+            RightandLeftMove();
+        }
+
+        if (Damege >= 30)
         {
             Target();
         }
-        
-        if(BossLife == 0)
-        {
-            Destroy(this.gameObject);
-        }
+
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -46,6 +55,34 @@ public class Boss : MonoBehaviour {
         if(other.gameObject.tag == "MainCamera")
         {
             Destroy(other.gameObject);
+        }
+    }
+    void RightandLeftMove()
+    {
+        transform.LookAt(Player);
+        if (close)
+        {
+            transform.position += new Vector3(1f * Time.deltaTime, 0f, 0.01f);
+            if(transform.position.x - vecBasePos.x >= 3)
+            {
+                close = false;
+            }
+        }
+        else
+        {
+            transform.position -= new Vector3(1f * Time.deltaTime, 0f, 0.01f);
+            if(transform.position.x - vecBasePos.x <= -3)
+            {
+                close = true;
+            }
+        }
+    }
+    void BossHit()
+    {
+        if (Damege <= 29)
+        {
+            Move();
+            close = false;
         }
     }
     void Move()
@@ -60,12 +97,13 @@ public class Boss : MonoBehaviour {
         transform.position += transform.forward * Bossspeed;
         Invoke("WaitBoss", 3);
     }
+    //ふたたびプレイヤーに向かっていく関数
     void WaitBoss()
     {
-        Bossspeed = 0.1f;
+        Bossspeed = 0.3f;
         Damege = 0;
     }
-
+    //ランダムを一定時間ごとに決める関数
     IEnumerator Delay()
     {
         while (true)
@@ -74,21 +112,21 @@ public class Boss : MonoBehaviour {
             yield return new WaitForSeconds(10);
         }
     }
+    //ランダムで、逃げる先を決める関数
     void SetRandomPosition()
     {
         int RandomRoty = Random.Range(0, 3);
-        if(RandomRoty == 0)
+        switch (RandomRoty)
         {
-            Roty = -60;
+            case 0:
+                Roty = -60;
+                break;
+            case 1:
+                Roty = 0;
+                break;
+            case 2:
+                Roty = 30;
+                break;
         }
-        else if(RandomRoty == 1)
-        {
-            Roty = 0;
-        }
-        else if(RandomRoty == 2)
-        {
-            Roty = 30;
-        }
-       //Roty = Random.Range(-60, 30);
     }
 }
