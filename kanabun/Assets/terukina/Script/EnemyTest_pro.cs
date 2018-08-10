@@ -17,15 +17,19 @@ public class EnemyTest_pro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(Target);
-        transform.position += transform.forward * EnemySpeed;
 
-        if(GameObject.Find ("Child").transform.IsChildOf(transform))
+
+        if (gameObject.transform.childCount == 1)
         {
             Invoke("Escape", 2f);
             print("ok");
+
+        } else {
+
+            Move();
+            //print("non");
         }
-        
+                
     }
 
     void Escape()
@@ -33,5 +37,11 @@ public class EnemyTest_pro : MonoBehaviour
         transform.LookAt(escape);
         transform.position += transform.forward * EnemySpeed;
     }
- 
+
+    void Move()
+    {
+        transform.LookAt(Target);
+        transform.position += transform.forward * EnemySpeed;
+    }
+
 }
