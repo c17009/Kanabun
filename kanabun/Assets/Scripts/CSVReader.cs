@@ -24,15 +24,14 @@ public class CSVReader : MonoBehaviour {
         _timing = new float[1024];
         _posNum = new int[1024];
         _enemyNum = new int[1024];
+        _startTime = Time.time;
         LoadCSV();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
-            CheckNextNotes();
-        
-	}
+        CheckNextNotes();
+    }
 
     void LoadCSV()
     {
