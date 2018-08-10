@@ -12,7 +12,7 @@ public class fruitbasket : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        print(fruit.Count);
+       // print(fruit.Count);
 	}
 
     private void OnTriggerEnter(Collider other)

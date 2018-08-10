@@ -6,31 +6,32 @@ public class EnemyTest_pro : MonoBehaviour
 {
     public Transform Target;
     public float EnemySpeed;
-  
+    public Transform escape;
 
     // Use this for initialization
     void Start()
     {
-     
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*transform.LookAt(Target);
-        transform.position += transform.forward * EnemySpeed;*/
+        transform.LookAt(Target);
+        transform.position += transform.forward * EnemySpeed;
+
+        if(GameObject.Find ("Child").transform.IsChildOf(transform))
+        {
+            Invoke("Escape", 2f);
+            print("ok");
+        }
         
     }
 
-
-    /*private void OnTriggerEnter(Collider other)
+    void Escape()
     {
-       
-        if (other.gameObject.tag == "Bullet")
-        {
-            Destroy(this.gameObject);
-            Destroy(other.gameObject);
-            EnemyDcount += 1;
-        }
-    }*/
+        transform.LookAt(escape);
+        transform.position += transform.forward * EnemySpeed;
+    }
+ 
 }
