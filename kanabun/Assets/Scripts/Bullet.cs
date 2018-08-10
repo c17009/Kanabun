@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    private float BulletSpeed = 100;
-    [SerializeField]
-    private GameObject Gamemanager;
-    private GameManager GameManager;
+    private GameManager GameManager;//Script宣言
 	// Use this for initialization
 	void Start () {
-        GameManager = Gamemanager.GetComponent<GameManager>();
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Destroy(this.gameObject, 10f);
     }
 
     // Update is called once per frame
@@ -19,6 +17,7 @@ public class Bullet : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
         //transform.Translate(0, 0, 1 * bspeed);
         //transform.position += transform.forward * bspeed * Time.deltaTime;
 	}
@@ -37,12 +36,12 @@ public class Bullet : MonoBehaviour {
         if(collision.gameObject.tag == "StartTrigger")
         {
             GameManager.GoToPlay();
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject,2f);
         }
-    }
-
-    IEnumerator BreakWait()
-    {
-        yield return new WaitForSeconds(2f);
+        if(collision.gameObject.tag == "FinishTrigger")
+        {
+            GameManager.GameFinish();
+            Destroy(collision.gameObject,1f);
+        }
     }
 }

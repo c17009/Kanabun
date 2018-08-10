@@ -6,8 +6,7 @@ public class EnemyTest_pro : MonoBehaviour
 {
     public Transform Target;
     public float EnemySpeed;
-    public static int EnemyDcount;
-
+    public Transform escape;
 
     // Use this for initialization
     void Start()
@@ -20,14 +19,19 @@ public class EnemyTest_pro : MonoBehaviour
     {
         transform.LookAt(Target);
         transform.position += transform.forward * EnemySpeed;
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Bullet")
+
+        if(GameObject.Find ("Child").transform.IsChildOf(transform))
         {
-            Destroy(this.gameObject);
-            Destroy(other.gameObject);
-            EnemyDcount += 1;
+            Invoke("Escape", 2f);
+            print("ok");
         }
+        
     }
+
+    void Escape()
+    {
+        transform.LookAt(escape);
+        transform.position += transform.forward * EnemySpeed;
+    }
+ 
 }
