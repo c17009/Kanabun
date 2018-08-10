@@ -26,22 +26,10 @@ public class Bullet : MonoBehaviour {
     {
         if(other.gameObject.tag == "Enemy")
         {
+            GameManager.Addpoint(10);
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "StartTrigger")
-        {
-            GameManager.GoToPlay();
-            Destroy(collision.gameObject,2f);
-        }
-        if(collision.gameObject.tag == "FinishTrigger")
-        {
-            GameManager.GameFinish();
-            Destroy(collision.gameObject,1f);
-        }
-    }
 }
