@@ -5,9 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     private GameManager GameManager;//Script宣言
+
+    public Animator anim;
+
 	// Use this for initialization
 	void Start () {
-        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+       // GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Destroy(this.gameObject, 10f);
     }
 
@@ -26,8 +29,9 @@ public class Bullet : MonoBehaviour {
     {
         if(other.gameObject.tag == "Enemy")
         {
-            GameManager.Addpoint(10);
-            Destroy(other.gameObject);
+            // GameManager.Addpoint(10);
+            anim.SetTrigger("death");
+            Destroy(other.gameObject, 2.5f);
             Destroy(gameObject);
         }
     }
