@@ -6,12 +6,16 @@ public class Boss : MonoBehaviour {
     private int  Damege = 0;
     public Transform Player;
     public GameObject PlayerPos;
+    public GameObject AttackCube;
+    private float AttackCubespeed = 500;
     private float Bossspeed = 0.3f;
     private int RandomPoint;
     private int BossLife = 5;
     private int Roty;
     private bool close = true;
+    private float timeElapsed;
     Vector3 vecBasePos;
+
     // Use this for initialization
     void Start () {
         Damege = 0;
@@ -31,7 +35,7 @@ public class Boss : MonoBehaviour {
         
         if(Dis >= 8)
         {
-            BossHit();
+            BossClose();
         }
         else
         {
@@ -52,14 +56,11 @@ public class Boss : MonoBehaviour {
             Destroy(other.gameObject);
             Damege += 1;
         }
-        if(other.gameObject.tag == "MainCamera")
-        {
-            Destroy(other.gameObject);
-        }
     }
     void RightandLeftMove()
     {
         transform.LookAt(Player);
+        BossCloseAttack();
         if (close)
         {
             transform.position += new Vector3(1f * Time.deltaTime, 0f, 0.01f);
@@ -77,7 +78,18 @@ public class Boss : MonoBehaviour {
             }
         }
     }
-    void BossHit()
+    void BossCloseAttack()
+    {
+        timeElapsed += Time.deltaTime;
+        if(timeElapsed >= 5)
+        {
+            var AttackIns = GameObject.Instantiate(AttackCube, this.transform.position, transform.rotation) as GameObject;
+            AttackIns.GetComponent<Rigidbody>().AddForce(this.transform.forward * AttackCubespeed);
+            Destroy(AttackIns, 10f);
+            timeElapsed = 0;
+        }
+    }
+    void BossClose()
     {
         if (Damege <= 29)
         {
