@@ -640,6 +640,17 @@ Prefab:
       propertyPath: PlayerPos
       value: 
       objectReference: {fileID: 529631052}
+    - target: {fileID: 54450871915886024, guid: 8a7de8ce0ccacd041bd37933e668dd4a,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832164555369702, guid: 8a7de8ce0ccacd041bd37933e668dd4a,
+        type: 2}
+      propertyPath: AttackCube
+      value: 
+      objectReference: {fileID: 1576960213505664, guid: 382186f6e2918234f89b17f947db4c4a,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a7de8ce0ccacd041bd37933e668dd4a, type: 2}
   m_IsPrefabParent: 0

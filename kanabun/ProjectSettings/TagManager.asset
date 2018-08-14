@@ -9,6 +9,9 @@ TagManager:
   - StartTrigger
   - Bullet
   - ground
+  - Target
+  - Boss
+  - Attack
   layers:
   - Default
   - TransparentFX
