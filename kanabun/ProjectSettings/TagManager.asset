@@ -12,6 +12,9 @@ TagManager:
   - Target
   - Boss
   - Attack
+  - Fruit
+  - Stump
+  - Escape
   layers:
   - Default
   - TransparentFX
