@@ -33,7 +33,7 @@ public class Boss : MonoBehaviour {
         //プレイヤーとボスの間の距離を取得
         float Dis = Vector3.Distance(PPos, BPos);
         
-        if(Dis >= 8)
+        if(Dis >= 20)
         {
             BossClose();
         }
@@ -64,7 +64,7 @@ public class Boss : MonoBehaviour {
         if (close)
         {
             transform.position += new Vector3(1f * Time.deltaTime, 0f, 0.01f);
-            if(transform.position.x - vecBasePos.x >= 3)
+            if(transform.position.x - vecBasePos.x >= 2)
             {
                 close = false;
             }
@@ -72,7 +72,7 @@ public class Boss : MonoBehaviour {
         else
         {
             transform.position -= new Vector3(1f * Time.deltaTime, 0f, 0.01f);
-            if(transform.position.x - vecBasePos.x <= -3)
+            if(transform.position.x - vecBasePos.x <= -2)
             {
                 close = true;
             }
