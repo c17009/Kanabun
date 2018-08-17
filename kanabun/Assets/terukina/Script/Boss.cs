@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : MonoBehaviour {
-    private int  Damege = 0;
+    public static int  Damege = 0;
     public Transform Player;
     public GameObject PlayerPos;
     public GameObject AttackCube;
     private float AttackCubespeed = 500;
-    private float Bossspeed = 0.3f;
+    private float Bossspeed = 0.01f;
     private int RandomPoint;
     private int BossLife = 5;
     private int Roty;
     private bool close = true;
     private float timeElapsed;
     Vector3 vecBasePos;
+    private GameManager GameManager;
 
     private Animator anim;
 
     // Use this for initialization
     void Start () {
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Damege = 0;
         StartCoroutine(Delay());
         vecBasePos = transform.position;
@@ -35,7 +37,7 @@ public class Boss : MonoBehaviour {
         //プレイヤーとボスの間の距離を取得
         float Dis = Vector3.Distance(PPos, BPos);
         
-        if(Dis >= 20)
+        if(Dis >= 3)
         {
             BossClose();
         }
@@ -46,6 +48,7 @@ public class Boss : MonoBehaviour {
 
         if (Damege >= 30)
         {
+
             Target();
         }
 
@@ -63,35 +66,26 @@ public class Boss : MonoBehaviour {
     void RightandLeftMove()
     {
         transform.LookAt(Player);
-        BossCloseAttack();
         if (close)
         {
             transform.position += new Vector3(1f * Time.deltaTime, 0f, 0.01f);
-            if(transform.position.x - vecBasePos.x >= 2)
+            if(transform.position.x - vecBasePos.x >= 1)
             {
+                GameManager.Addpoint(-10);
                 close = false;
             }
         }
         else
         {
             transform.position -= new Vector3(1f * Time.deltaTime, 0f, 0.01f);
-            if(transform.position.x - vecBasePos.x <= -2)
+            if(transform.position.x - vecBasePos.x <= -1)
             {
+                GameManager.Addpoint(-10);
                 close = true;
             }
         }
     }
-    void BossCloseAttack()
-    {
-        timeElapsed += Time.deltaTime;
-        if(timeElapsed >= 5)
-        {
-            var AttackIns = GameObject.Instantiate(AttackCube, this.transform.position, transform.rotation) as GameObject;
-            AttackIns.GetComponent<Rigidbody>().AddForce(this.transform.forward * AttackCubespeed);
-            Destroy(AttackIns, 10f);
-            timeElapsed = 0;
-        }
-    }
+
     void BossClose()
     {
         if (Damege <= 29)
@@ -107,7 +101,7 @@ public class Boss : MonoBehaviour {
     }
     void Target()
     {
-        Bossspeed = 0.5f;
+        Bossspeed = 0.03f;
         transform.rotation = Quaternion.Euler(0,Roty,0);
         transform.position += transform.forward * Bossspeed;
         Invoke("WaitBoss", 3);
@@ -115,7 +109,7 @@ public class Boss : MonoBehaviour {
     //ふたたびプレイヤーに向かっていく関数
     void WaitBoss()
     {
-        Bossspeed = 0.3f;
+        Bossspeed = 0.01f;
         Damege = 0;
     }
     //ランダムを一定時間ごとに決める関数

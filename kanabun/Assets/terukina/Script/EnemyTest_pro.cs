@@ -10,12 +10,14 @@ public class EnemyTest_pro : MonoBehaviour
 
     private Animator anim;
     private GameManager GameManager;
+    private int Roty;
 
     // Use this for initialization
     void Start()
     {
         anim = GetComponent<Animator>();
-       // GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        StartCoroutine(Delay());
     }
 
     // Update is called once per frame
@@ -23,7 +25,7 @@ public class EnemyTest_pro : MonoBehaviour
     {
 
 
-        if (gameObject.transform.childCount == 3)
+        if (gameObject.transform.childCount >= 3)
         {
             
             Invoke("Escape", 2f);
@@ -45,25 +47,31 @@ public class EnemyTest_pro : MonoBehaviour
             anim.SetTrigger("death");
         }
 
-        if(other.gameObject.tag == "Stump")
+        if(other.gameObject.tag == "Stump" )
         {
             transform.GetChild(2).gameObject.transform.position = transform.forward;
-            transform.GetChild(2).gameObject.transform.localPosition = new Vector3(0, 5, 5);
+            transform.GetChild(2). gameObject.transform.localPosition = new Vector3(0, 5, 5);
         }
 
-        if(other.gameObject.tag == "Escape")
+        /*if(other.gameObject.tag == "Escape")
         {
-            print("OK");
             PointLoss();
-        }
+        }*/
     }
 
     void Escape()
     {
         anim.SetBool("run", false);
         anim.SetTrigger("have");
-        transform.LookAt(escape);
+
+        transform.rotation = Quaternion.Euler(0, Roty, 0);
         transform.position += transform.forward * EnemySpeed;
+        if(this.transform.position.z >= 15)
+        {
+            PointLoss();
+        }
+        //transform.LookAt(escape);
+        //transform.position += transform.forward * EnemySpeed;
         //print("escape");
     }
 
@@ -76,8 +84,36 @@ public class EnemyTest_pro : MonoBehaviour
 
     void PointLoss()
     {
-            Destroy(gameObject, 1f);
-            //GameManager.Addpoint(-10);
+            Destroy(gameObject, 0.15f);
+            GameManager.Addpoint(-1);
+    }
+    IEnumerator Delay()
+    {
+        SetRandomPosition();
+        yield break;
+            
+    }
+    void SetRandomPosition()
+    {
+        int RandomRoty = Random.Range(0, 5);
+        switch (RandomRoty)
+        {
+            case 0:
+                Roty = -60;
+                break;
+            case 1:
+                Roty = 0;
+                break;
+            case 2:
+                Roty = 30;
+                break;
+            case 3:
+                Roty = -30;
+                break;
+            case 4:
+                Roty = 60;
+                break;
+        }
     }
 
 }

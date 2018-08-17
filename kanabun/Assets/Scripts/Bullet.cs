@@ -8,8 +8,8 @@ public class Bullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-       // GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Destroy(this.gameObject, 10f);
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Destroy(this.gameObject, 3f);
     }
 
     // Update is called once per frame
@@ -18,18 +18,19 @@ public class Bullet : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-
-        //transform.Translate(0, 0, 1 * bspeed);
-        //transform.position += transform.forward * bspeed * Time.deltaTime;
 	}
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Enemy")
         {
-            // GameManager.Addpoint(10);
+            GameManager.Addpoint(20);
             Destroy(other.gameObject, 1f);
             Destroy(gameObject);
+        }
+        if(other.gameObject.tag == "Boss")
+        {
+            Boss.Damege += 1;
         }
 
     }
