@@ -16,6 +16,8 @@ public class Boss : MonoBehaviour {
     private float timeElapsed;
     Vector3 vecBasePos;
 
+    private Animator anim;
+
     // Use this for initialization
     void Start () {
         Damege = 0;
@@ -53,6 +55,7 @@ public class Boss : MonoBehaviour {
     {
         if(other.gameObject.tag == "Bullet")
         {
+            anim.SetTrigger("down");
             Destroy(other.gameObject);
             Damege += 1;
         }
