@@ -1542,6 +1542,7 @@ MonoBehaviour:
   Target: {fileID: 4485653170975328, guid: 1f094ed556d2cf649a4ed56f8836098a, type: 2}
   EnemySpeed: 0.01
   escape: {fileID: 4734702471164428, guid: 770a6dd2d7d244a4abc4e5324fb9f9d2, type: 2}
+  E_sub: {fileID: 1000038622143142, guid: 4a9b26bedfc2e8649a2b2f3576073244, type: 2}
 --- !u!136 &136838240971187154
 CapsuleCollider:
   m_ObjectHideFlags: 1

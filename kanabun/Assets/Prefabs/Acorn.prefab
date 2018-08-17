@@ -112,7 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c795e66b40559e84586b70490ec14aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gamemanager: {fileID: 0}
 --- !u!136 &136227403060168936
 CapsuleCollider:
   m_ObjectHideFlags: 1

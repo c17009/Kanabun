@@ -7,6 +7,7 @@ public class EnemyTest_pro : MonoBehaviour
     public Transform Target;
     public float EnemySpeed;
     public Transform escape;
+    public GameObject E_sub;
 
     private Animator anim;
     private GameManager GameManager;
@@ -44,7 +45,9 @@ public class EnemyTest_pro : MonoBehaviour
         if(other.gameObject.tag == "Bullet")
         {
             EnemySpeed = 0;
+            Instantiate(E_sub, gameObject.transform.position, Quaternion.identity);
             anim.SetTrigger("death");
+            Destroy(E_sub, 5f);
         }
 
         if(other.gameObject.tag == "Stump" )

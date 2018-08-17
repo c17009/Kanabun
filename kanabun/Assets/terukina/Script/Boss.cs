@@ -17,6 +17,8 @@ public class Boss : MonoBehaviour {
     Vector3 vecBasePos;
     private GameManager GameManager;
 
+    private Animator anim;
+
     // Use this for initialization
     void Start () {
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -55,6 +57,7 @@ public class Boss : MonoBehaviour {
     {
         if(other.gameObject.tag == "Bullet")
         {
+            anim.SetTrigger("down");
             Destroy(other.gameObject);
             Damege += 1;
         }
