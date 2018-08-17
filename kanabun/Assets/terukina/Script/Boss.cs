@@ -8,7 +8,7 @@ public class Boss : MonoBehaviour {
     public GameObject PlayerPos;
     public GameObject AttackCube;
     private float AttackCubespeed = 500;
-    private float Bossspeed = 0.01f;
+    private float Bossspeed = 0.05f;
     private int RandomPoint;
     private int BossLife = 5;
     private int Roty;
@@ -35,7 +35,7 @@ public class Boss : MonoBehaviour {
         //プレイヤーとボスの間の距離を取得
         float Dis = Vector3.Distance(PPos, BPos);
         
-        if(Dis >= 3)
+        if(Dis >= 2)
         {
             BossClose();
         }
@@ -44,9 +44,8 @@ public class Boss : MonoBehaviour {
             RightandLeftMove();
         }
 
-        if (Damege >= 30)
+        if (Damege >= 60)
         {
-
             Target();
         }
 
@@ -68,7 +67,7 @@ public class Boss : MonoBehaviour {
             transform.position += new Vector3(1f * Time.deltaTime, 0f, 0.01f);
             if(transform.position.x - vecBasePos.x >= 1)
             {
-                GameManager.Addpoint(-10);
+                GameManager.Addpoint(-1);
                 close = false;
             }
         }
@@ -77,7 +76,7 @@ public class Boss : MonoBehaviour {
             transform.position -= new Vector3(1f * Time.deltaTime, 0f, 0.01f);
             if(transform.position.x - vecBasePos.x <= -1)
             {
-                GameManager.Addpoint(-10);
+                GameManager.Addpoint(-1);
                 close = true;
             }
         }
@@ -85,7 +84,7 @@ public class Boss : MonoBehaviour {
 
     void BossClose()
     {
-        if (Damege <= 29)
+        if (Damege <= 59)
         {
             Move();
             close = false;
@@ -101,12 +100,12 @@ public class Boss : MonoBehaviour {
         Bossspeed = 0.03f;
         transform.rotation = Quaternion.Euler(0,Roty,0);
         transform.position += transform.forward * Bossspeed;
-        Invoke("WaitBoss", 3);
+        Invoke("WaitBoss", 5f);
     }
     //ふたたびプレイヤーに向かっていく関数
     void WaitBoss()
     {
-        Bossspeed = 0.01f;
+        Bossspeed = 0.03f;
         Damege = 0;
     }
     //ランダムを一定時間ごとに決める関数

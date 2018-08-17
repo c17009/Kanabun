@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour {
     {
         if(other.gameObject.tag == "Enemy")
         {
-            GameManager.Addpoint(20);
+            GameManager.Addpoint(10);
             Destroy(other.gameObject, 1f);
             Destroy(gameObject);
         }

@@ -40,6 +40,10 @@ public class Shooter : MonoBehaviour
             {
                 aimPointImage.color = new Color(1, 0, 0, 1);
             }
+            else if ((hitTag.Equals("Boss")))
+            {
+                aimPointImage.color = new Color(1, 0, 0, 1);
+            }
             else
             {
                 //Enemy以外では水色に
