@@ -304,6 +304,12 @@ Prefab:
       propertyPath: escape
       value: 
       objectReference: {fileID: 1056134432}
+    - target: {fileID: 114128686506199618, guid: fef94b8ec679dea4c864aa01f6d6d0a9,
+        type: 2}
+      propertyPath: E_sub
+      value: 
+      objectReference: {fileID: 1000038622143142, guid: 4a9b26bedfc2e8649a2b2f3576073244,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fef94b8ec679dea4c864aa01f6d6d0a9, type: 2}
   m_IsPrefabParent: 0
@@ -1059,6 +1065,12 @@ Prefab:
       propertyPath: escape
       value: 
       objectReference: {fileID: 1586843469}
+    - target: {fileID: 114128686506199618, guid: fef94b8ec679dea4c864aa01f6d6d0a9,
+        type: 2}
+      propertyPath: E_sub
+      value: 
+      objectReference: {fileID: 1000038622143142, guid: 4a9b26bedfc2e8649a2b2f3576073244,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fef94b8ec679dea4c864aa01f6d6d0a9, type: 2}
   m_IsPrefabParent: 0
