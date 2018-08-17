@@ -46,7 +46,7 @@ public class Boss : MonoBehaviour {
             RightandLeftMove();
         }
 
-        if (Damege >= 60)
+        if (Damege >= 50)
         {
             Target();
         }
@@ -87,7 +87,7 @@ public class Boss : MonoBehaviour {
 
     void BossClose()
     {
-        if (Damege <= 59)
+        if (Damege <= 49)
         {
             Move();
             close = false;
