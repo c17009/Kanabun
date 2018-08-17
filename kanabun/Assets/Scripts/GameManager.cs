@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private bool isPlaying = false;
     private GameObject CSVReader;
+    private AudioSource[] BGM;
+    public GameObject practice;
+
+
 
 
     void Start()
@@ -34,6 +38,9 @@ public class GameManager : MonoBehaviour {
         MainTime = GameObject.Find("timeText").GetComponent<Text>();
         scoretext = GameObject.Find("Score").GetComponent<Text>();
         Initialize();
+        BGM = gameObject.GetComponents<AudioSource>();
+        BGM[0].Play();
+        practice.SetActive(true);
     }
 
 
@@ -46,7 +53,7 @@ public class GameManager : MonoBehaviour {
     {
         score = 0;
         isPlaying = false;
-        time = 60;
+        time = 200;
         PlayPanel.SetActive(false);
         ResultPanel.SetActive(false);
         StartPanel.SetActive(true);
@@ -63,6 +70,7 @@ public class GameManager : MonoBehaviour {
     {
             if (Mathf.CeilToInt(time) <= 0f)
             {
+            BGM[0].Play();
             GoToResult();
                 return;
             }
@@ -95,6 +103,7 @@ public class GameManager : MonoBehaviour {
     public void GoToPlay()
     {
         InfoText.text = "Ready...";
+        practice.SetActive(false);
         StartPanel.SetActive(false);
         PlayPanel.SetActive(true);
         Invoke("WaitPlay", 3f);
@@ -110,6 +119,7 @@ public class GameManager : MonoBehaviour {
 
     private void InstFinish()
     {
+        BGM[1].Stop();
         InfoText.text = score.ToString();
         ResultPanel.SetActive(true);
         Instantiate(FinishObject, new Vector3(0, 0.5f, 7.674f), Quaternion.identity);
@@ -118,6 +128,8 @@ public class GameManager : MonoBehaviour {
     private void WaitPlay()
     {
         CSVReader.SetActive(true);
+        BGM[0].Stop();
+        BGM[1].Play();
         isPlaying = true;
         InfoText.text = null;
     }

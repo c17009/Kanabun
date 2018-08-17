@@ -11,8 +11,9 @@ public class CSVReader : MonoBehaviour {
     private int[] _enemyNum;
     private int _enemiesCount;
     public string filePass;
-    private Vector3[] spawnPos = {new Vector3(-4,1.5f,10),new Vector3(-2,1.5f,10),new Vector3(0,1.5f,10),
-                                  new Vector3 (2,1.5f,10),new Vector3 (4,1.5f,10)};
+    private Vector3[] spawnPos = {new Vector3(-4,0,10),new Vector3(-2,0,10),new Vector3(0,0,10),
+                                  new Vector3 (2,0,10),new Vector3 (4,0,10)};
+    
 
     private float _startTime = 0;
 
