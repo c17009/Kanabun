@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
     {
         score = 0;
         isPlaying = false;
-        time = 200;
+        time = 90;
         PlayPanel.SetActive(false);
         ResultPanel.SetActive(false);
         StartPanel.SetActive(true);
@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour {
 
     public void Addpoint(int point)
     {
+        if (score <= 0 && point < 0) { return; }
         score = score + point;
     }
 
@@ -113,6 +114,7 @@ public class GameManager : MonoBehaviour {
     {
         InfoText.text = "Finish!!";
         CSVReader.SetActive(false);
+        PlayPanel.SetActive(false);
         isPlaying = false;
         Invoke("InstFinish", 3f);
     }
